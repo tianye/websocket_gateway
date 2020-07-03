@@ -1,9 +1,25 @@
+文件: 
+
+MAC版本:websocket_gateway_mac.zip
+
+Linux版本:websocket_gateway_linux_amd64.zip
+
+
+使用需要解压
+
 启动
 
 MAC版本:
 ```
 ./websocket_gateway_mac -network_local_ip="127.0.0.1" -intranet_local_ip="127.0.0.1" -socket_listen_port="8301" -http_listen_port="8302" -callback_url_path="http://127.0.0.1:8808/service_callback.php"
 ```
+
+Linux版本:
+```
+./websocket_gateway_linux_amd64 -network_local_ip="127.0.0.1" -intranet_local_ip="127.0.0.1" -socket_listen_port="8301" -http_listen_port="8302" -callback_url_path="http://127.0.0.1:8808/service_callback.php"
+```
+
+
 
 启动参数
 ```
@@ -38,4 +54,20 @@ service_callback.log 接受到的日志
 common/structure/connection/connection.go:369
 func DecodeConnection(connectionId string) (connectionInfo ConnectionInfo, err error)
 
+```
+
+打包:
+```
+Mac 下编译 Linux 和 Windows 64位可执行程序:
+------------------------------------------------------------------
+websocket_gateway_mac:
+go1.14.4 build main.go
+------------------------------------------------------------------
+websocket_gateway_linux_amd64:
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go1.14.4 build main.go
+------------------------------------------------------------------
+GOOS：目标平台的操作系统（darwin、freebsd、linux、windows）
+GOARCH：目标平台的体系架构（386、amd64、arm）
+交叉编译不支持 CGO 所以要禁用它
+------------------------------------------------------------------
 ```
