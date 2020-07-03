@@ -23,6 +23,11 @@ service_api.php 模拟服务端主动调用接口
 service_callback.php 模拟接受到(客户端消息和事件的处理)和当前gateway的事件处理
 service_callback.log 接受到的日志
 
+service_callback可以启动一个
+cd client_and_service
+php -S 127.0.0.1:8808
+进行测试使用
+
 如果也是go服务的话也是直接请求接口和接受json事件就可以了.
 解密管道ID的方法在文件:
 common/structure/connection/connection.go:369
