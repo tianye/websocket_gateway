@@ -1,49 +1,18 @@
-启动
+
+###注意: 
 ```
-go run main.go -network_local_ip="127.0.0.1" -intranet_local_ip="127.0.0.1" -socket_listen_port="8301" -http_listen_port="8302" -callback_url_path="http://127.0.0.1:8808/service_callback.php"
-```
-
-打包好的版本:
-
-路径: ./client_admin_service
-
-压缩文件: 
-
-MAC版本:websocket_gateway_mac.zip
-
-Linux版本:websocket_gateway_linux_amd64.zip
-
-使用需要解压
-
-
-MAC版本:
-```
-./websocket_gateway_mac -network_local_ip="127.0.0.1" -intranet_local_ip="127.0.0.1" -socket_listen_port="8301" -http_listen_port="8302" -callback_url_path="http://127.0.0.1:8808/service_callback.php"
+1. 生产环境需要使用 Supervisor 保证稳定
+2. 生成的管道ID 每离线1000个用户会重新复用 需要修改 
+路径文件: conf/defind.go 
+const ClearSocketConnectionNum = 1000
+可以在自行打包, !!!所以离线的管道记录需要删除,不要存储
+3. 使用实例和linux版,mac版服务端已经打包好在
+linux路径文件: client_admin_service/websocket_gateway_mac.zip
+mac路径文件: client_admin_service/websocket_gateway_linux_amd64.zip
+需要解压缩后使用
 ```
 
-Linux版本:
-```
-./websocket_gateway_linux_amd64 -network_local_ip="127.0.0.1" -intranet_local_ip="127.0.0.1" -socket_listen_port="8301" -http_listen_port="8302" -callback_url_path="http://127.0.0.1:8808/service_callback.php"
-```
-
-
-启动参数
-```
- -callback_url_path string
-        事件回调地址 (default "http://127.0.0.1:8808/service_callback.php")
-  -conf string
-        配置文件
-  -http_listen_port string
-        http监听端口 (default "8302")
-  -intranet_local_ip string
-        内网访问IP-没有请填写同外网IP (default "127.0.0.1")
-  -network_local_ip string
-        外网IP (default "127.0.0.1")
-  -socket_listen_port string
-        socket监听端口 (default "8301")
-```
-
-使用:
+###使用:
 ```
 client_and_service文件夹
 
@@ -62,7 +31,41 @@ func DecodeConnection(connectionId string) (connectionInfo ConnectionInfo, err e
 
 ```
 
-打包:
+###启动
+```
+go run main.go -network_local_ip="127.0.0.1" -intranet_local_ip="127.0.0.1" -socket_listen_port="8301" -http_listen_port="8302" -callback_url_path="http://127.0.0.1:8808/service_callback.php"
+```
+
+MAC版本:
+```
+./websocket_gateway_mac -network_local_ip="127.0.0.1" -intranet_local_ip="127.0.0.1" -socket_listen_port="8301" -http_listen_port="8302" -callback_url_path="http://127.0.0.1:8808/service_callback.php"
+```
+
+Linux版本:
+```
+./websocket_gateway_linux_amd64 -network_local_ip="127.0.0.1" -intranet_local_ip="127.0.0.1" -socket_listen_port="8301" -http_listen_port="8302" -callback_url_path="http://127.0.0.1:8808/service_callback.php"
+```
+
+
+###启动参数
+```
+ -callback_url_path string
+        事件回调地址 (default "http://127.0.0.1:8808/service_callback.php")
+  -conf string
+        配置文件
+  -http_listen_port string
+        http监听端口 (default "8302")
+  -intranet_local_ip string
+        内网访问IP-没有请填写同外网IP (default "127.0.0.1")
+  -network_local_ip string
+        外网IP (default "127.0.0.1")
+  -socket_listen_port string
+        socket监听端口 (default "8301")
+```
+
+
+
+###打包:
 ```
 Mac 下编译 Linux 和 Windows 64位可执行程序:
 ------------------------------------------------------------------
