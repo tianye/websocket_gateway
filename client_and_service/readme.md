@@ -25,9 +25,9 @@ MAC版本:
 ```
 client_and_service文件夹
 
-client.html 模拟客户端连接 js版本
-client_php.html 模拟客户端连接 php版
-
+client.html     模拟客户端连接 js版本
+client_php.php  模拟客户端连接 php版
+client_go.go    模拟客户端连接 go版
 
 service_api.php 模拟服务端主动调用接口
 service_callback.php 模拟接受到(客户端消息和事件的处理)和当前gateway的事件处理
