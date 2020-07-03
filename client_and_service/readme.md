@@ -1,6 +1,8 @@
 启动
+
+MAC版本:
 ```
-./websocket_gateway -network_local_ip="127.0.0.1" -intranet_local_ip="127.0.0.1" -socket_listen_port="8101" -http_listen_port="8102" -callback_url_path="http://127.0.0.1:8808/service_callback.php"
+./websocket_gateway_mac -network_local_ip="127.0.0.1" -intranet_local_ip="127.0.0.1" -socket_listen_port="8301" -http_listen_port="8302" -callback_url_path="http://127.0.0.1:8808/service_callback.php"
 ```
 
 启动参数
@@ -23,7 +25,10 @@
 ```
 client_and_service文件夹
 
-client.html 模拟客户端连接
+client.html 模拟客户端连接 js版本
+client_php.html 模拟客户端连接 php版
+
+
 service_api.php 模拟服务端主动调用接口
 service_callback.php 模拟接受到(客户端消息和事件的处理)和当前gateway的事件处理
 service_callback.log 接受到的日志
